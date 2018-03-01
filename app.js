@@ -38,10 +38,9 @@ function paintNews(element){
     let title=element.headline.main;
     let snippet=element.snippet;
     let url=element.web_url;
-    let imgUrl=element.multimedia[2].url;
-    console.log(imgUrl);
+    let imgUrl=element.multimedia[1].url;
     let httpimg= ('https://www.nytimes.com/'+imgUrl);   
-    let header=document.createElement('h3');
+    let header=document.createElement('h2');
     let li=document.createElement('li');
     let parr=document.createElement('a');
     let img=document.createElement('img');
