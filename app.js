@@ -24,17 +24,29 @@ function handleError(){
 function addNews(){
     const data=JSON.parse(this.responseText);
     const response=data.response;
-    const article = data.response.docs[0];
-   /* articles.forEach(function(element){
-        console.log(element);
-    })*/
+    const article = data.response.docs;
+   article.forEach(function(element){
+        
+        //return element;
+        paintNews(element);
+    })
+        
+        
+        
     
-    const title=article.headline.main;
-    const snippet=article.snippet;
-    const url=article.web_url;
-    const imgUrl=article.multimedia[1].legacy.url;
+   /* const title=element.headline.main;
+    const snippet=element.snippet;
+    const url=element.web_url;
+    const imgUrl=element.multimedia[1].legacy.url;*/
+    
     console.log(response);
+}
 
+function paintNews(element){
+    let title=element.headline.main;
+    let snippet=element.snippet;
+    let url=element.web_url;
+    let imgUrl=element.multimedia[1].legacy.url;
     let header=document.createElement('h3');
     let li=document.createElement('li');
     let parr=document.createElement('p');
@@ -44,10 +56,10 @@ function addNews(){
     li.innerText=snippet;
     header.innerHTML=title;
     parr.innerHTML=url;
-
+    
     responseContainer.appendChild(header);
     responseContainer.appendChild(li);
     responseContainer.appendChild(parr);
     responseContainer.appendChild(img);
-    
+   
 }
