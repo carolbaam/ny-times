@@ -27,31 +27,26 @@ function addNews(){
     const article = data.response.docs;
    article.forEach(function(element){
         
-        //return element;
+     console.log(element);
         paintNews(element);
     })
         
-        
-        
-    
-   /* const title=element.headline.main;
-    const snippet=element.snippet;
-    const url=element.web_url;
-    const imgUrl=element.multimedia[1].legacy.url;*/
-    
-    console.log(response);
+   
 }
 
 function paintNews(element){
     let title=element.headline.main;
     let snippet=element.snippet;
     let url=element.web_url;
-    let imgUrl=element.multimedia[1].legacy.url;
+    let imgUrl=element.multimedia[2].url;
+    console.log(imgUrl);
+    let httpimg= ('https://www.nytimes.com/'+imgUrl);   
     let header=document.createElement('h3');
     let li=document.createElement('li');
-    let parr=document.createElement('p');
+    let parr=document.createElement('a');
     let img=document.createElement('img');
-    img.setAttribute('src','imgUrl');
+    img.setAttribute('src',httpimg);
+    parr.setAttribute('href',url);
     li.className='articleClass';
     li.innerText=snippet;
     header.innerHTML=title;
